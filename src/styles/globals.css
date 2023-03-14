@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-image: radial-gradient(
+    circle farthest-side at 50% 100%,rgba(1, 9, 18, 0),
+    rgba(1, 6, 14, 0.6) 36%,
+    rgba(1, 14, 29, 0.6) 55%,
+    rgba(49, 18, 93, 0.4));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* example: override wallet button style */
+.wallet-adapter-button:not([disabled]):hover {
+  background-color: #707070;
+}
+
+
+.z {
+  /*este comando selecciona todo lo que este contenido dentro de "Z" en el INDEX.EJS, lo que altera sus propiedades*/
+  color: #000000;
+  /*cambia el color de la letra*/
+}
+
+.x {
+  color: #00f646;
+}
+.votely {
+  font-size: 25px;
+  /*cambia el tamaño de la letra*/
+  font-style: normal;
+  /*cambia el formato de la letra (cursiva, subrayada, etc)*/
+}
+#loginButton{
+  background: linear-gradient(#AF7AC5 , #af7ac5ea );
+}
+#loginButton:hover{
+  background: linear-gradient(#986aab , #986aabea );
+}
+#signinButton{
+  color: black; 
+  padding-bottom: 2%;
+  background: linear-gradient(#ffffff , #ffffffea );
+}
+#signinButton:hover{
+  color: rgb(255, 255, 255); 
+  padding-bottom: 2%;
+  background: linear-gradient(#AF7AC5 , #af7ac5ea );
+}
+button{
+  border-radius: 5px;
+  size: large;
+  font-weight: bold;
+  font-style: normal;
+  font-size: large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-bottom: 5px;
+  padding:6px 24px;
+}
+
+#titulodelprimerpaquete{
+  color: blueviolet;
+}
+
+#titulodelsegundopaquete{
+  color:rgb(217, 157, 4)
+}
+
+#titulodeltercerpaquete{
+  color: rgb(6, 147, 248);
+}
+
+#partedearriba{
+  background-color: #d89cf1;
+}
+
+#botonesderedessociales{
+  background-attachment: fixed;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f03f45; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a32a2f; 
+}
