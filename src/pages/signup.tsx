@@ -156,14 +156,13 @@ export default function Signup() {
 
                       <div className="mt-4">
                         <select
-                          type="text"
                           name="sex"
                           id="sex"
                           value={formData.sex}
                           onChange={handleChange}
                           className="p-1 block w-full rounded-sm border border-gray-300 focus:border-indigo-300 bg-gray-100 outline-none ease-linear text-black"
                         >
-                          <option value="" disabled defaultValue>
+                          <option value="" disabled>
                             Select a gender
                           </option>
                           <option value="male">Male</option>

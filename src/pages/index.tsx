@@ -24,7 +24,6 @@ const Home: NextPage = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    if(formData.password === formData.verifyPassword){
         axios.post('/api/user', formData)
         .then(response => {
           if(response.data.isAllowed){
@@ -36,9 +35,6 @@ const Home: NextPage = (props) => {
         .catch(error => {
         console.error('Error:', error);
         });
-    }else{
-        console.log('No es la contraseña');
-    }
   }
 
   return (
@@ -106,7 +102,7 @@ const Home: NextPage = (props) => {
                                       Somos más que una compañia,
                                       Somos Seguridad y Confianza.
                                   </h4>
-                                  <p className="text-sm" style={{textAlign: "justify;"}}>
+                                  <p className="text-sm" style={{textAlign: "justify"}}>
                                       Nuestra empresa se dedica a hacer que las votaciones sean más seguras y accesibles
                                       gracias a la tecnología BlockChain. Creemos que la transparencia y la confiabilidad
                                       son fundamentales en el proceso de votación, y estamos comprometidos en proporcionar
