@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import axios from 'axios'
 import { useWallet, useConnection } from '@solana/wallet-adapter-react'
-export default function signup() {
+export default function Signup() {
   const wallet = useWallet();
   const { connection } = useConnection()
   
