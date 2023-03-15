@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import Head from "next/head";
 import axios from "axios";
 import CandidateCard from "../../components/CandidateCard";
+//import { SendTransaction } from "../../components/SendTransaction";
 export default function Survey (){
   const router = useRouter();
   const { id } = router.query;
@@ -27,6 +28,7 @@ export default function Survey (){
                     account={candidate.id}
                   />
               ))}
+        {/*<SendTransaction/>*/}
       </div>
     </>
   );
