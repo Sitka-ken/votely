@@ -3,9 +3,8 @@ import { mySqlQuery } from "../../helpers/databases"
 import idl from '../../constants/idl.json'
 import { web3, Connection,clusterApiUrl, PublicKey } from "@solana/web3.js";
 import * as anchor from "@project-serum/anchor";
-require('dotenv').config();
 export default async function handler(req, res) {
-    const programPubKey = process.env.PROGRAM_PUBKEY
+    const programPubKey = 'HZHWXmC5M7SzUH1Sov3NwcQpUcPAq2MCkkwi45xKW3bZ'
     let connection = new Connection(clusterApiUrl('devnet'));
     const provider = new anchor.AnchorProvider(connection,{preflightCommitment: 'recent'});
     const program = new anchor.Program(idl,programPubKey , provider)
