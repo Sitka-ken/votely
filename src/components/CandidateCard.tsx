@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import { Connection, clusterApiUrl, VersionedTransaction  } from '@solana/web3.js';
-import { WalletAdapterNetwork, PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
 import idl from '../constants/idl.json';
 import * as anchor from '@project-serum/anchor';
 import { PublicKey, Transaction, SystemProgram, TransactionInstruction } from "@solana/web3.js";
