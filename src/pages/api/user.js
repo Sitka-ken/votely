@@ -2,7 +2,6 @@ import { NextApiRequest, NextApiResponse } from 'react'
 import { mySqlQuery } from "../../helpers/databases"
 import _ from 'lodash'
 export default async function handler(req, res) {
-    res.setHeader('Content-Type', 'application/json');
     switch (req.method) {
         case "POST":
             let data = await mySqlQuery(`select * from users where (username='${req.body.userOrMail}' or email='${req.body.userOrMail}') and password = '${req.body.signinPassword}'`);
@@ -46,12 +45,6 @@ export default async function handler(req, res) {
         default:
             break;
     }
-
-
-    
-
-
-  res.setHeader('Content-Type', 'application/json')
   res.statusCode = 200
   res.end()
 }
