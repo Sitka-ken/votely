@@ -5,6 +5,7 @@ import { HomeView } from "../views";
 import type { NextPage } from "next";
 import React, { useState, useEffect } from 'react'
 import { useWallet, useConnection } from '@solana/wallet-adapter-react'
+import { notify } from "../utils/notifications";
 const Home: NextPage = (props) => {
   const wallet = useWallet();
   const { connection } = useConnection()
@@ -22,6 +23,12 @@ const Home: NextPage = (props) => {
     }))
   }
 
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) {
+        handleSubmit(e);
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault()
         axios.post('/api/user', formData)
@@ -29,16 +36,25 @@ const Home: NextPage = (props) => {
           if(response.data.isAllowed){
             window.location.href = '/dashboard';
           }else{
-            window.location.reload();
+            notify({ type: 'error', message: 'unknown combination' ? `Error:\n unknown combination` : 'error.name' });
+            //window.location.reload();
           }
         })
         .catch(error => {
         console.error('Error:', error);
         });
-  }
-
+    }
+    const gotoSignup = (event) => {
+        event.preventDefault()
+        window.location.replace('/signup')
+    }
   return (
-  <main>
+  <>
+  
+  <Head>
+        <title>Login</title>
+      </Head>  
+  <main className='pt-10'>
     <section className="gradient-form h-full bg-neutral-200 dark:bg-neutral-700">
       <div className="container h-full p-10" style={{paddingTop: "5%", paddingBottom: "0%", paddingLeft: "15%", paddingRight: "0%"}}>
           <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
@@ -72,6 +88,7 @@ const Home: NextPage = (props) => {
                                               name="signinPassword" 
                                               value={formData.signinPassword}
                                               onChange={handleChange}
+                                              onKeyDown={handleKeyDown}
                                               placeholder="password" />
                                       </div>
                                       <div className="mb-12 pt-1 pb-1 text-center">
@@ -88,6 +105,7 @@ const Home: NextPage = (props) => {
                                           <button 
                                               id="signinButton"
                                               type="button"
+                                              onClick={gotoSignup}
                                               className="inline-block rounded border-2 border-danger px-6 pt-2 pb-[6px] text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700">
                                               Sign up
                                           </button>
@@ -117,6 +135,6 @@ const Home: NextPage = (props) => {
       </div>
     </section>
   </main>
-  );
+  </>);
 };
 export default Home;

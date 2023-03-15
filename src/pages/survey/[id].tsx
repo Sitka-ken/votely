@@ -1,10 +1,25 @@
 /* eslint-disable @next/next/no-sync-scripts */
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
-const votationCard = () => {
+import React, { useState, useEffect } from "react";
+import { useRouter } from 'next/router';
+import Head from "next/head";
+import axios from "axios";
+
+export default function Survey (){
+  const router = useRouter();
+  const { id } = router.query;
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`/api/getContenders/${id}`)
+      .then((response) => console.log(response.data))
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
   return (
     <>
-      <div className="max-w-screen-lg mx-auto flex flex-wrap justify-center ">
+      <div className="max-w-screen-lg mx-auto flex flex-wrap justify-center pt-16">
         <div className="contenedor w-2/5 justify-center items-center mt-8 mr-6 mb-6 h-auto">
           <div
             className="prin h-auto rounded-sm border-solid"
@@ -33,7 +48,7 @@ const votationCard = () => {
             >
               <div className="w-1/5 h-24">
                 <img
-                  src="/public/img/images/GRIZZLYE.jpg"
+                  src="/GRIZZLYE.jpg"
                   alt=""
                   className="w-full h-full md:h-auto min-h-max rounded-lg bg-gray-300 object-fill md:object-center"
                   style={{ height: "80%" }}
@@ -101,13 +116,7 @@ const votationCard = () => {
           </div>
         </div>
       </div>
-
-      <div id="myModal" className="fixed  inset-0 overflow-y-auto hidden mt-20">
-        {}
-      </div>
-      <script src="./modal2Open.js"></script>
     </>
   );
 };
 
-export default votationCard;

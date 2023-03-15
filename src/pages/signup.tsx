@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import axios from "axios";
 import { useWallet, useConnection } from "@solana/wallet-adapter-react";
+import { notify } from "../utils/notifications";
 export default function Signup() {
   const wallet = useWallet();
   const { connection } = useConnection();
@@ -37,6 +38,11 @@ export default function Signup() {
         .put("/api/user", formData)
         .then((response) => {
           console.log("Response:", response.data);
+          if(response.data.isAllowed){
+            window.location.replace('/')
+          }else{
+              notify({ type: 'error', message: response.data.errorCode ? `Error:\n ${response.data.errorCode}` : 'error.name' });
+          }
         })
         .catch((error) => {
           console.error("Error:", error);

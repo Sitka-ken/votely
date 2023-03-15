@@ -27,10 +27,21 @@ export default async function handler(req, res) {
             let username = req.body.username
             let password = req.body.password
             let verifyPassword = req.body.verifyPassword
-            let sus = await mySqlQuery(`select * from users where population_registration='${populationRegister}' or telephone='${cellphone}' or wallet='${wallet}' or email='${email}' or username='${username}'`);
-            console.log(sus);
-            await mySqlQuery(`INSERT INTO users (name, last_name, population_registration,email, address, telephone, wallet, sex, birth_date, username, password) 
-            VALUES ('${firstName}', '${lastName}', '${populationRegister}', '${email}', '${address}', '${cellphone}', '${wallet}', '${sex}', '${birthDate}', '${username}', '${password}');`);
+            let suspect = await mySqlQuery(`select * from users where population_registration='${populationRegister}' or wallet='${wallet}'`);
+            let susuname = await mySqlQuery(`select * from users where username='${username}'`);
+            if(_.size(suspect) != 0){
+                res.statusCode = 200;
+                res.json({ isAllowed: false, errorCode: "Population register or wallet duplicated, cant continue with the process" })
+            }else{
+                if(_.size(susuname) != 0){
+                    res.statusCode = 200;
+                    res.json({ isAllowed: false, errorCode: "Username already taken" })
+                } else {
+                    await mySqlQuery(`INSERT INTO users (name, last_name, population_registration,email, address, telephone, wallet, sex, birth_date, username, password) 
+                    VALUES ('${firstName}', '${lastName}', '${populationRegister}', '${email}', '${address}', '${cellphone}', '${wallet}', '${sex}', '${birthDate}', '${username}', '${password}');`);
+                    res.status(200).json({ isAllowed: true })
+                }
+            }
             break;
         default:
             break;
