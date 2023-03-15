@@ -11,7 +11,7 @@ const CandidateCard = ({
   account = ""
 }) => {
     const handleSubmit = async(event) => {
-        const programPubKey = 'HZHWXmC5M7SzUH1Sov3NwcQpUcPAq2MCkkwi45xKW3bZ'
+        /*const programPubKey = 'HZHWXmC5M7SzUH1Sov3NwcQpUcPAq2MCkkwi45xKW3bZ'
 
         let connection = new Connection(clusterApiUrl('devnet'));
         const provider = new anchor.AnchorProvider(connection,{preflightCommitment: 'recent'});
@@ -23,7 +23,7 @@ const CandidateCard = ({
         //const candidateIdentity = await connection.getAccountInfo(candidateIdentityAccount);
         const candidateIdentity = await program.account.candidateIdentity.fetch(candidateIdentityAccount);
         const candidateIdentityData = idl.CandidateIdentity.decode(candidateIdentity.data);
-        
+
         candidateIdentityData.votes += 1;
         // Encode the new account data
         const candidateIdentityBuffer = Buffer.from(idl.CandidateIdentity.encode(candidateIdentityData).finish());
@@ -48,7 +48,8 @@ const CandidateCard = ({
         { signature, ...latestBlockhash },
         "confirmed"
       );
-        console.log("Transaction signature:", signature);
+        console.log("Transaction signature:", signature);*/
+        alert("we are working on it")
     }
   return (
     <>
