@@ -1,54 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
-import { Connection, clusterApiUrl, VersionedTransaction  } from '@solana/web3.js';
-import idl from '../constants/idl.json';
-import * as anchor from '@project-serum/anchor';
-import { PublicKey, Transaction, SystemProgram, TransactionInstruction } from "@solana/web3.js";
-import * as Buffer from 'buffer'
 const CandidateCard = ({
   nameCandidate = "",
   account = ""
 }) => {
-    const handleSubmit = async(event) => {
-        /*const programPubKey = 'HZHWXmC5M7SzUH1Sov3NwcQpUcPAq2MCkkwi45xKW3bZ'
-
-        let connection = new Connection(clusterApiUrl('devnet'));
-        const provider = new anchor.AnchorProvider(connection,{preflightCommitment: 'recent'});
-        const program = new anchor.Program(idl,programPubKey , provider)
-
-        const candidateIdentityAccount = new anchor.web3.PublicKey(event);
-
-        // Get the current version of the account data
-        //const candidateIdentity = await connection.getAccountInfo(candidateIdentityAccount);
-        const candidateIdentity = await program.account.candidateIdentity.fetch(candidateIdentityAccount);
-        const candidateIdentityData = idl.CandidateIdentity.decode(candidateIdentity.data);
-
-        candidateIdentityData.votes += 1;
-        // Encode the new account data
-        const candidateIdentityBuffer = Buffer.from(idl.CandidateIdentity.encode(candidateIdentityData).finish());
-
-        const programId = new PublicKey(programPubKey);
-        const transaction = new web3.Transaction().add(
-        anchor.web3.SystemProgram.programId,
-        [
-            {
-            pubkey: candidateIdentityAccount,
-            isSigner: false,
-            isWritable: true,
-            }
-        ],
-        program.programId,
-        candidateIdentityBuffer,
-        );
-        let latestBlockhash = await connection.getLatestBlockhash();
-        const transation = new VersionedTransaction(transaction);
-        const signature = await sendTransaction(transation, connection);
-      await connection.confirmTransaction(
-        { signature, ...latestBlockhash },
-        "confirmed"
-      );
-        console.log("Transaction signature:", signature);*/
-        alert("we are working on it")
+    const handleSubmit = (event) => {
+        alert('working on it')
     }
   return (
     <>
