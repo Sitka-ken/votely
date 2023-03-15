@@ -18,7 +18,8 @@ export default async function handler(req, res) {
         try {
             const transaction = await program.account.candidateIdentity.fetch(acc);
             if(surveyPubkey === transaction.forElection.toBase58()){
-                cluster.push({id:acc,transaction:transaction});
+                let author = await mySqlQuery(`SELECT concat(name, ' ', last_name) as author FROM soto_playground.users where wallet='${transaction.name}'`);
+                cluster.push({id:acc,transaction:transaction,author:author[0].author});
             }
         }catch(e){
             

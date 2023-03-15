@@ -40,7 +40,7 @@ export default function Dashboard() {
                     description={survey.transaction.description}
                     sdate="-"
                     edate="-"
-                    Qimage="/GRIZZLYE.jpg"
+                    Qimage={(survey.transaction.name=='GRIZZLYTHON')? "/GRIZZLYE.jpg":""}
                     survey={survey.id}
                   />
                 </div>
